@@ -1,21 +1,19 @@
 version: 2
 jobs:
   one:
-    build:
-      docker:
-        - image: circleci/ruby:2.4.1
-      steps:
-        - checkout
-        - run: echo "Hello i am the fist job - will sleep 25 sec"
-        - run: sleep 25
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "Hello i am the fist job - will sleep 25 sec"
+      - run: sleep 25
   two:
-    build:
-      docker:
-        - image: circleci/ruby:2.4.1
-      steps:
-        - checkout
-        - run: echo "Hello i am the 2nd job - will sleep 15 sec"
-        - run: sleep 15
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "Hello i am the 2nd job - will sleep 15 sec" 
+      - run: sleep 15
 workflows:
   version: 2
   one_and_two:
