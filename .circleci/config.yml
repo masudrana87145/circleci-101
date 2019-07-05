@@ -16,9 +16,9 @@ jobs:
         - checkout
         - run: echo "Hello i am the 2nd job - will sleep 15 sec"
         - run: sleep 15
- workflows:
-   version: 2
-   one_and_two:
-     jobs:
-       - one
-       - two
+workflows:
+  version: 2
+  one_and_two:
+    jobs:
+      - one
+      - two
