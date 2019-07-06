@@ -2,21 +2,28 @@ version: 2
 jobs:
   one:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/python:3.7.2
     steps:
       - checkout
       - run: echo "Hello i am the fist job - will sleep 25 sec"
+      - run: test.sh
       - run: sleep 25
   two:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/python:3.7.2
     steps:
       - checkout
-      - run: echo "Hello i am the 2nd job - will sleep 15 sec" 
-      - run: sleep 15
+      - run: docker build --rm -t masudrana87145/hellorana:1.0 .
+      - run: sleep 5
+      - run: docker login -u masudrana87145 -p $PASS
+      - run: sleep 5
+      - run: docker push masudrana87145/hellorana:1.0
+      - run: sleep 5
 workflows:
   version: 2
   one_and_two:
     jobs:
       - one
-      - two
+      - two:
+          requires:
+            - one
