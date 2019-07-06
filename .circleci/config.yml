@@ -6,6 +6,7 @@ jobs:
     steps:
       - checkout
       - run: echo "Hello i am the fist job - will sleep 25 sec"
+      - run: chmod 755 ./test.sh
       - run: ./test.sh
       - run: sleep 25
   two:
